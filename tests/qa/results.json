@@ -1,0 +1,211 @@
+{
+  "total": 34,
+  "passed": 34,
+  "failed": 0,
+  "results": [
+    {
+      "suite": "Routing",
+      "name": "Landing page title matches expectation",
+      "passed": true,
+      "details": "AI Voice & Video Scam Checker — Dừng một nhịp trước khi tin"
+    },
+    {
+      "suite": "Landing Content",
+      "name": "HeroSection present",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Landing Content",
+      "name": "PressureScenario (#tinh-huong) present",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Landing Content",
+      "name": "VerifySequence (#cach-xu-ly) present",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Landing Content",
+      "name": "ProductFlow (#cong-cu) present",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Landing Content",
+      "name": "DemoLimitations (#gioi-han) present",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Landing Content",
+      "name": "SafetyChecklist (#checklist) present",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Landing Content",
+      "name": "PrivacySection (#quyen-rieng-tu) present",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Landing Content",
+      "name": "StoryFooter present",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Anchor Navigation",
+      "name": "Click anchor #tinh-huong updates URL hash",
+      "passed": true,
+      "details": "#tinh-huong"
+    },
+    {
+      "suite": "Navigation CTA",
+      "name": "Smooth navigation to /app updates pathname",
+      "passed": true,
+      "details": "/app"
+    },
+    {
+      "suite": "Navigation CTA",
+      "name": "Title updates to /app title",
+      "passed": true,
+      "details": "AI Voice & Video Scam Checker — Local Demo (/app)"
+    },
+    {
+      "suite": "Direct /app & Refresh",
+      "name": "Direct URL loaded and refreshed at /app",
+      "passed": true,
+      "details": "/app"
+    },
+    {
+      "suite": "Direct /app & Refresh",
+      "name": "DemoBanner displays correctly with role=alert",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Direct /app & Refresh",
+      "name": "ScopeIntroduction component present",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Direct /app & Refresh",
+      "name": "FileUploader input present & intact",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Direct /app & Refresh",
+      "name": "No horizontal layout overflow on Desktop",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Direct /app & Refresh",
+      "name": "ScopeIntroduction details toggle expansion works",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Browser Back/Forward",
+      "name": "Browser Back returns to / and renders Landing",
+      "passed": true,
+      "details": "/"
+    },
+    {
+      "suite": "Browser Back/Forward",
+      "name": "Browser Forward returns to /app and renders App",
+      "passed": true,
+      "details": "/app"
+    },
+    {
+      "suite": "Navigation Return",
+      "name": "Top bar return link navigates back to /",
+      "passed": true,
+      "details": "/"
+    },
+    {
+      "suite": "Mobile Responsive",
+      "name": "Landing 375x667 no horizontal overflow",
+      "passed": true,
+      "details": "scrollWidth=375"
+    },
+    {
+      "suite": "Mobile Responsive",
+      "name": "Mobile hamburger menu button visible",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Mobile Responsive",
+      "name": "Desktop nav hidden on mobile",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Mobile Responsive",
+      "name": "Mobile menu opens properly",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Mobile Responsive",
+      "name": "App 375x667 no horizontal overflow",
+      "passed": true,
+      "details": "scrollWidth=375"
+    },
+    {
+      "suite": "Mobile Responsive",
+      "name": "App components render correctly on mobile",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Accessibility",
+      "name": "Skip link to #story-main present",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Accessibility",
+      "name": "Skip link is focusable via keyboard tab order",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Accessibility",
+      "name": "Landing has standard ARIA landmarks (header, main, nav, footer)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Accessibility",
+      "name": "App has standard ARIA landmarks (skip-link, header, main, role=alert, footer)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Accessibility",
+      "name": "prefers-reduced-motion CSS media query rule detected",
+      "passed": true,
+      "details": "Found 1 rule(s)"
+    },
+    {
+      "suite": "Accessibility",
+      "name": "Browser successfully matches prefers-reduced-motion: reduce",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "suite": "Accessibility",
+      "name": "Keyboard Tab event moves focus to interactive element",
+      "passed": true,
+      "details": "A #story-main"
+    }
+  ]
+}
