@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
           <p className="text-slate-400 font-medium">
-            AI Voice &amp; Video Scam Checker • Kiến trúc v1 tối giản cục bộ
+            Debunk • Bản demo xử lý cục bộ
           </p>
             <div className="flex items-center space-x-4">
               <span className="text-slate-400">Xử lý tạm thời (TTL 15 phút)</span>

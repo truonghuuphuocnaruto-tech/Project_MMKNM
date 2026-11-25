@@ -9,9 +9,9 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     if (isApp) {
-      document.title = 'AI Voice & Video Scam Checker — Local Demo (/app)';
+      document.title = 'Debunk — Bản demo cục bộ';
     } else {
-      document.title = 'AI Voice & Video Scam Checker — Dừng một nhịp trước khi tin';
+      document.title = 'Debunk — Dừng một nhịp trước khi tin';
     }
   }, [isApp]);
 

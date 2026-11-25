@@ -29,7 +29,7 @@ export const Header: React.FC<HeaderProps> = ({ backendOnline, onRefreshHealth }
           <div>
             <div className="flex items-center space-x-2">
               <h1 className="text-base sm:text-lg font-bold text-white tracking-tight">
-                AI Voice &amp; Video Scam Checker
+                Debunk
               </h1>
               <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800">
                 v1 Local Demo

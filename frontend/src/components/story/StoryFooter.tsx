@@ -83,14 +83,14 @@ export const StoryFooter: React.FC<StoryFooterProps> = ({ onNavigate }) => {
             Tuyên bố miễn trừ trách nhiệm &amp; Tính độc lập:
           </strong>
           <p>
-            AI Voice &amp; Video Scam Checker là dự án nghiên cứu và công cụ giáo dục an toàn số mã nguồn mở độc lập. Dự án tham khảo và phổ biến lại các cẩm nang hướng dẫn phòng chống lừa đảo chính thức nêu trên nhằm mục đích nâng cao nhận thức cộng đồng. Dự án <strong>KHÔNG đại diện, KHÔNG trực thuộc và KHÔNG được chứng nhận hay bảo trợ bởi Cục An toàn thông tin, Bộ Công an hay bất kỳ cơ quan quản lý nhà nước nào</strong>.
+            Debunk là dự án nghiên cứu và công cụ giáo dục an toàn số mã nguồn mở độc lập. Dự án tham khảo và phổ biến lại các cẩm nang hướng dẫn phòng chống lừa đảo chính thức nêu trên nhằm mục đích nâng cao nhận thức cộng đồng. Dự án <strong>KHÔNG đại diện, KHÔNG trực thuộc và KHÔNG được chứng nhận hay bảo trợ bởi Cục An toàn thông tin, Bộ Công an hay bất kỳ cơ quan quản lý nhà nước nào</strong>.
           </p>
         </div>
 
         {/* Bottom copyright & project info */}
         <div className="border-t border-[#334155] pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#64748b] gap-3">
           <div>
-            <span>© 2026 AI Voice &amp; Video Scam Checker. Giấy phép mã nguồn mở MIT.</span>
+            <span>© 2026 Debunk. Giấy phép mã nguồn mở MIT.</span>
           </div>
           <div className="flex items-center space-x-4">
             <span>Thiết kế thuần SVG/CSS không phụ thuộc asset ngoài</span>

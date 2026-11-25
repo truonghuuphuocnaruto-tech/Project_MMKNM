@@ -52,7 +52,7 @@ export const StoryHeader: React.FC<StoryHeaderProps> = ({ onNavigate }) => {
               </div>
               <div>
                 <span className="block text-sm sm:text-base font-bold text-[#17232e] tracking-tight leading-tight group-hover:text-[#0f766e] transition">
-                  AI Voice &amp; Video Scam Checker
+                  Debunk
                 </span>
                 <span className="hidden sm:block text-[11px] text-[#6b7d8c] font-medium leading-tight">
                   Nhận thức phòng vệ số &amp; Phân tích kỹ thuật
