@@ -16,6 +16,9 @@ function githubPagesSpaPlugin() {
       const notFoundHtml = path.join(outDir, '404.html');
       if (fs.existsSync(indexHtml)) {
         fs.copyFileSync(indexHtml, notFoundHtml);
+        const appDir = path.join(outDir, 'app');
+        fs.mkdirSync(appDir, { recursive: true });
+        fs.copyFileSync(indexHtml, path.join(appDir, 'index.html'));
       }
     },
   };
