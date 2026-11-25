@@ -9,7 +9,7 @@ export function formatBytes(bytes: number, decimals: number = 2): string {
 
 export function formatDuration(seconds: number | null): string {
   if (seconds === null || seconds === undefined || isNaN(seconds)) {
-    return 'Chưa phân tích (chưa có sandbox cách ly)';
+    return 'Chưa xác định';
   }
   const mins = Math.floor(seconds / 60);
   const secs = (seconds % 60).toFixed(1);

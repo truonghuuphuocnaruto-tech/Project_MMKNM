@@ -183,7 +183,10 @@ export const VerifySequence: React.FC = () => {
             type="button"
             onClick={() => {
               const el = document.getElementById('cong-cu');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
+              if (el) {
+                const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                el.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth' });
+              }
             }}
             className="shrink-0 text-xs font-bold text-[#0f766e] hover:underline"
           >

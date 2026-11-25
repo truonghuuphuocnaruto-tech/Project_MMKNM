@@ -89,7 +89,7 @@ export const PrivacySection: React.FC = () => {
             <span>Thông tin về ranh giới kỹ thuật hiện tại:</span>
           </h4>
           <p className="leading-relaxed text-[#485966]">
-            Chúng tôi không tuyên bố &ldquo;bảo mật tuyệt đối không thể xâm phạm&rdquo; hay &ldquo;không lưu giữ bất kỳ định danh nào&rdquo; ở mức độ chung chung. Mọi hành vi lưu trữ tạm thời, dọn dẹp tệp cách ly và giải phóng bộ nhớ được triển khai đúng theo mã nguồn hiện hành của backend local (tại <code className="font-mono text-xs bg-[#efe7dc] px-1 py-0.5 rounded">backend/app/</code>) và không gửi dữ liệu ra bất kỳ máy chủ từ xa nào. Parser media trên host process tiếp tục được giữ tắt (thời lượng hiển thị chưa phân tích, chưa kiểm tra giới hạn 60 giây) và Cổng An Toàn Bước 3 đang bảo lưu ở mức PARTIAL để chờ môi trường sandbox cô lập.
+            Chúng tôi không tuyên bố &ldquo;bảo mật tuyệt đối không thể xâm phạm&rdquo; hay &ldquo;không lưu giữ bất kỳ định danh nào&rdquo; ở mức độ chung chung. Mọi hành vi lưu trữ tạm thời, dọn dẹp tệp cách ly và giải phóng bộ nhớ được triển khai đúng theo mã nguồn hiện hành của backend local (tại <code className="font-mono text-xs bg-[#efe7dc] px-1 py-0.5 rounded">backend/app/</code>) và không gửi dữ liệu ra bất kỳ máy chủ từ xa nào. Trình trích xuất thời lượng media cho các định dạng âm thanh và video đã được kích hoạt chạy cô lập 100% bên trong container sandbox Podman Rootless (với 7 lớp phòng vệ an ninh, kiểm chứng giới hạn 60s) và parser trên host process tiếp tục tắt. Bước 4 (mô hình AI phân tích) tiếp tục ở trạng thái CHƯA BẮT ĐẦU.
           </p>
         </div>
       </div>

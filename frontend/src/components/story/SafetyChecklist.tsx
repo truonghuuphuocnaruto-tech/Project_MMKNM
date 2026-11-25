@@ -82,7 +82,16 @@ export const SafetyChecklist: React.FC = () => {
             return (
               <div
                 key={item.id}
+                role="checkbox"
+                aria-checked={isChecked}
+                tabIndex={0}
                 onClick={() => handleToggle(item.id)}
+                onKeyDown={(e) => {
+                  if (e.key === ' ' || e.key === 'Enter') {
+                    e.preventDefault();
+                    handleToggle(item.id);
+                  }
+                }}
                 className={`p-5 rounded-2xl border transition cursor-pointer select-none ${
                   isChecked
                     ? 'bg-[#f0fdfa] border-[#0f766e] shadow-sm'

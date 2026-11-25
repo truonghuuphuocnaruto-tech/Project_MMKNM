@@ -61,9 +61,9 @@ export const ProcessingStatus: React.FC<ProcessingStatusProps> = ({
       <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-700/50 text-xs text-slate-300 space-y-1">
         <p className="font-medium text-slate-200">Quy trình demo local đang thực thi:</p>
         <ul className="list-disc list-inside text-slate-400 space-y-0.5 pl-1">
-          <li>Tệp được lưu vào thư mục cách ly tạm thời (quarantine)</li>
-          <li>Đọc từng khối nhị phân để tính mã băm SHA-256</li>
-          <li>Đo thời lượng WAV tối đa 60 giây bằng thư viện chuẩn; định dạng khác không được giải mã</li>
+            <li>Tệp được lưu vào thư mục cách ly tạm thời (quarantine)</li>
+            <li>Đọc từng khối nhị phân để tính mã băm SHA-256</li>
+            <li>Trích xuất thời lượng tối đa 60 giây trong container sandbox cô lập (WAV, MP3, OGG, MP4, WebM); không chạy parser trên tiến trình host</li>
         </ul>
       </div>
     </section>

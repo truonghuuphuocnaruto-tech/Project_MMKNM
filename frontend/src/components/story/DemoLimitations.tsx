@@ -24,18 +24,18 @@ export const DemoLimitations: React.FC = () => {
         'Danh sách các dấu hiệu (cues) xuất hiện trong báo cáo phân tích là dữ liệu giáo dục mẫu được định nghĩa sẵn nhằm mô tả các phương diện kiểm tra, KHÔNG PHẢI là kết quả suy luận từ nội dung âm thanh/video do bạn tải lên.',
     },
     {
-      label: 'Trình phân tích (parser) đang tắt — Thời lượng null',
-      status: 'DURATION: NULL',
-      statusClass: 'bg-slate-200 text-slate-800 border-slate-300',
+      label: 'Trình phân tích media chạy cô lập trong sandbox (WAV, MP3, OGG, MP4, WebM)',
+      status: 'SANDBOX: ACTIVE',
+      statusClass: 'bg-emerald-100 text-emerald-800 border-emerald-300',
       detail:
-        'Nhằm ngăn chặn bề mặt tấn công qua thư viện phân tích media (như FFmpeg parser exploits), trình trích xuất codec và metadata chuyên sâu tạm thời được tắt cho đến khi hoàn thành môi trường sandbox cô lập. Do đó, trường thời lượng hiển thị giá trị null và hệ thống chưa kiểm tra ngưỡng giới hạn 60 giây.',
+        'Trình trích xuất thời lượng media được kích hoạt chạy cô lập 100% bên trong container sandbox Podman Rootless (với 7 lớp phòng vệ an ninh, kiểm chứng giới hạn 60s cho cả Voice & Video) thay vì chạy trên tiến trình host. Định dạng không hợp lệ hoặc vượt giới hạn bị từ chối nghiêm ngặt.',
     },
     {
-      label: 'Ranh giới an toàn Bước 3 đang ở trạng thái PARTIAL',
-      status: 'PARTIAL',
-      statusClass: 'bg-amber-100 text-amber-800 border-amber-300',
+      label: 'Ranh giới an toàn Bước 3 & Bước 4 Model CHƯA BẮT ĐẦU',
+      status: 'BƯỚC 3: XÁC MINH',
+      statusClass: 'bg-emerald-100 text-emerald-800 border-emerald-300',
       detail:
-        'Theo hồ sơ bảo mật kỹ thuật của dự án, cơ chế bảo vệ và kiểm định sandbox tại Bước 3 vẫn đang trong quá trình phát triển (PARTIAL). Bản demo tuân thủ nguyên tắc không tuyên bố đạt chứng chỉ an toàn cao hơn mức thực tế đã xác minh.',
+        'Cơ chế container sandbox đã được kiểm chứng trên runtime Podman Rootless. Tuy nhiên, Bước 4 (mô hình AI phân tích deepfake) hoàn toàn CHƯA BẮT ĐẦU và không tải bất kỳ tệp weights hay dataset nào vào repository.',
     },
   ];
 

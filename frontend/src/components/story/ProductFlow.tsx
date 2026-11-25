@@ -11,7 +11,7 @@ export const ProductFlow: React.FC<ProductFlowProps> = ({ onNavigate }) => {
       title: 'Tải tệp cục bộ an toàn',
       badge: 'Localhost Only',
       badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-300',
-      desc: 'Tệp âm thanh (.wav, .mp3) hoặc video (.mp4) chỉ được gửi trực tiếp tới máy chủ backend chạy trên máy của bạn (http://localhost:8000). Không có dữ liệu nào bị chuyển tiếp ra internet.',
+      desc: 'Tệp âm thanh (.wav, .mp3, .ogg) hoặc video (.mp4, .webm) chỉ được gửi trực tiếp tới máy chủ backend chạy trên máy của bạn (http://localhost:8000). Không có dữ liệu nào bị chuyển tiếp ra internet.',
     },
     {
       num: '2',

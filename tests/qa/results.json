@@ -1,6 +1,6 @@
 {
-  "total": 34,
-  "passed": 34,
+  "total": 42,
+  "passed": 42,
   "failed": 0,
   "results": [
     {
@@ -155,6 +155,12 @@
     },
     {
       "suite": "Mobile Responsive",
+      "name": "Mobile menu closes on Escape key (375x667)",
+      "passed": true,
+      "details": "aria-expanded=false, linksCount=0"
+    },
+    {
+      "suite": "Mobile Responsive",
       "name": "App 375x667 no horizontal overflow",
       "passed": true,
       "details": "scrollWidth=375"
@@ -185,6 +191,12 @@
     },
     {
       "suite": "Accessibility",
+      "name": "SafetyChecklist receives Space/Enter and updates aria-checked (1920x1080)",
+      "passed": true,
+      "details": "initial=false -> Space=true -> Enter=false"
+    },
+    {
+      "suite": "Accessibility",
       "name": "App has standard ARIA landmarks (skip-link, header, main, role=alert, footer)",
       "passed": true,
       "details": ""
@@ -203,9 +215,45 @@
     },
     {
       "suite": "Accessibility",
+      "name": "JS scroll actions use behavior=auto when prefers-reduced-motion is active",
+      "passed": true,
+      "details": "recorded behaviors: [auto, auto, auto]"
+    },
+    {
+      "suite": "Accessibility",
       "name": "Keyboard Tab event moves focus to interactive element",
       "passed": true,
       "details": "A #story-main"
+    },
+    {
+      "suite": "App Local-Only & Guards",
+      "name": "/app displays Local-Only Demo banner and disables upload when backend is offline (1920x1080)",
+      "passed": true,
+      "details": "banner=true, status=true, disabled=true, tabIndex=-1, ariaDisabled=true"
+    },
+    {
+      "suite": "App Local-Only & Guards",
+      "name": "FileUploader rejects unsupported extensions (.avi and .flac) on client even with video/* or audio/* MIME",
+      "passed": true,
+      "details": "aviRejected=true, flacRejected=true"
+    },
+    {
+      "suite": "App Local-Only & Guards",
+      "name": "/app displays distinct ErrorAlert messages for HTTP 503 (sandbox unavailable) and HTTP 504 (parser timeout)",
+      "passed": true,
+      "details": "503_displayed=true, 504_displayed=true"
+    },
+    {
+      "suite": "App Local-Only & Guards",
+      "name": "Cancelling in-flight upload aborts fetch signal and prevents stale response from updating UI (1920x1080)",
+      "passed": true,
+      "details": "cancelBtn=true, aborted=true, idle=true, noReport=true, noErr=true"
+    },
+    {
+      "suite": "App Local-Only & Guards",
+      "name": "Health check reports online and mock DELETE succeeds when AbortSignal.timeout and AbortSignal.any are unavailable (1920x1080)",
+      "passed": true,
+      "details": "offlineFirst=true, apisDisabled=true, healthOnline=true, healthSignal=true, report=true, deleteOk=true, idle=true, noErr=true"
     }
   ]
 }

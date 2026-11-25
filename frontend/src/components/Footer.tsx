@@ -8,9 +8,9 @@ export const Footer: React.FC = () => {
           <p className="text-slate-400 font-medium">
             AI Voice &amp; Video Scam Checker • Kiến trúc v1 tối giản cục bộ
           </p>
-          <div className="flex items-center space-x-4">
-            <span className="text-slate-400">Không thu thập PII</span>
-            <span>•</span>
+            <div className="flex items-center space-x-4">
+              <span className="text-slate-400">Xử lý tạm thời (TTL 15 phút)</span>
+              <span>•</span>
             <span className="text-slate-400">Cách ly tệp tạm thời</span>
             <span>•</span>
             <span className="text-slate-400">Không gửi dữ liệu ra ngoài</span>

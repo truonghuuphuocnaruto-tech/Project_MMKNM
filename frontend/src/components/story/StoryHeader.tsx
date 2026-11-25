@@ -7,6 +7,17 @@ interface StoryHeaderProps {
 export const StoryHeader: React.FC<StoryHeaderProps> = ({ onNavigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  React.useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [mobileMenuOpen]);
+
   const navLinks = [
     { label: 'Tình huống', href: '#tinh-huong' },
     { label: 'Cách xử lý', href: '#cach-xu-ly' },
@@ -39,14 +50,14 @@ export const StoryHeader: React.FC<StoryHeaderProps> = ({ onNavigate }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-                <div>
-                  <span className="block text-sm sm:text-base font-bold text-[#17232e] tracking-tight leading-tight group-hover:text-[#0f766e] transition">
-                    AI Voice &amp; Video Scam Checker
-                  </span>
-                  <span className="hidden sm:block text-[11px] text-[#6b7d8c] font-medium leading-tight">
-                    Nhận thức phòng vệ số &amp; Phân tích kỹ thuật
-                  </span>
-                </div>
+              <div>
+                <span className="block text-sm sm:text-base font-bold text-[#17232e] tracking-tight leading-tight group-hover:text-[#0f766e] transition">
+                  AI Voice &amp; Video Scam Checker
+                </span>
+                <span className="hidden sm:block text-[11px] text-[#6b7d8c] font-medium leading-tight">
+                  Nhận thức phòng vệ số &amp; Phân tích kỹ thuật
+                </span>
+              </div>
             </a>
           </div>
 

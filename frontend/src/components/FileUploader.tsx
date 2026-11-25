@@ -8,7 +8,7 @@ interface FileUploaderProps {
 }
 
 const MAX_FILE_SIZE_BYTES = 15 * 1024 * 1024; // 15MB
-const ALLOWED_EXTENSIONS = ['.mp3', '.wav', '.ogg', '.mp4', '.webm'];
+const ALLOWED_EXTENSIONS = ['.wav', '.mp3', '.ogg', '.mp4', '.webm'];
 const ALLOWED_MIME_PREFIXES = ['audio/', 'video/'];
 
 export const FileUploader: React.FC<FileUploaderProps> = ({
@@ -36,8 +36,8 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
     const hasAllowedExt = ALLOWED_EXTENSIONS.some((ext) => nameLower.endsWith(ext));
     const hasAllowedMime = ALLOWED_MIME_PREFIXES.some((prefix) => file.type.startsWith(prefix));
 
-    if (!hasAllowedExt && !hasAllowedMime) {
-      return `Định dạng tệp không được hỗ trợ. Chỉ chấp nhận tệp âm thanh (.mp3, .wav, .ogg) hoặc video (.mp4, .webm).`;
+    if (!hasAllowedExt || (file.type !== '' && !hasAllowedMime)) {
+      return `Định dạng tệp không được hỗ trợ. Chỉ chấp nhận tệp âm thanh (.wav, .mp3, .ogg) hoặc video (.mp4, .webm).`;
     }
 
     return null;
@@ -92,6 +92,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
   };
 
   const handleBoxKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (disabled || isLoading) return;
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       fileInputRef.current?.click();
@@ -135,7 +136,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
         ref={fileInputRef}
         type="file"
         id="file-upload-input"
-        accept=".mp3,.wav,.ogg,.mp4,.webm,audio/mpeg,audio/wav,audio/ogg,video/mp4,video/webm"
+        accept=".wav,.mp3,.ogg,.mp4,.webm,audio/wav,audio/x-wav,audio/mpeg,audio/ogg,video/mp4,video/webm"
         className="sr-only"
         onChange={handleInputChange}
         disabled={disabled || isLoading}
@@ -145,6 +146,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
       <div
         tabIndex={disabled || isLoading ? -1 : 0}
         role="button"
+        aria-disabled={disabled || isLoading}
         aria-label="Khu vực kéo thả tệp. Nhấn phím Enter hoặc Phím cách để duyệt tệp từ thiết bị"
         onKeyDown={handleBoxKeyDown}
         onClick={() => !isLoading && !disabled && fileInputRef.current?.click()}
@@ -180,14 +182,12 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
               Kéo thả tệp vào đây hoặc{' '}
               <span className="text-cyan-400 underline underline-offset-2">duyệt từ thiết bị</span>
             </p>
-            <p className="mt-1 text-xs text-slate-400">
-              Định dạng hỗ trợ: Âm thanh (<code className="text-cyan-300">.mp3</code>,{' '}
-              <code className="text-cyan-300">.wav</code>, <code className="text-cyan-300">.ogg</code>) | Video (
-              <code className="text-cyan-300">.mp4</code>, <code className="text-cyan-300">.webm</code>)
-            </p>
+              <p className="mt-1 text-xs text-slate-400">
+                Định dạng hỗ trợ: Âm thanh (<code className="text-cyan-300">.wav</code>, <code className="text-cyan-300">.mp3</code>, <code className="text-cyan-300">.ogg</code>) | Video (<code className="text-cyan-300">.mp4</code>, <code className="text-cyan-300">.webm</code>) • Tối đa 15MB • Giới hạn 60 giây
+              </p>
+            </div>
           </div>
         </div>
-      </div>
 
       {clientError && (
         <div

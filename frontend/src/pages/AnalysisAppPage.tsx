@@ -29,6 +29,8 @@ export const AnalysisAppPage: React.FC<AnalysisAppPageProps> = ({ onNavigateHome
 
   const pollingTimerRef = useRef<number | null>(null);
   const activeJobIdRef = useRef<string | null>(null);
+  const requestSeqRef = useRef<number>(0);
+  const abortControllerRef = useRef<AbortController | null>(null);
 
   const checkHealth = useCallback(async () => {
     const health = await checkBackendHealth();
@@ -49,10 +51,19 @@ export const AnalysisAppPage: React.FC<AnalysisAppPageProps> = ({ onNavigateHome
   };
 
   useEffect(() => {
-    return () => clearPolling();
+    return () => {
+      requestSeqRef.current++;
+      abortControllerRef.current?.abort();
+      abortControllerRef.current = null;
+      clearPolling();
+    };
   }, []);
 
   const handleStartUpload = async (file: File) => {
+    const seq = ++requestSeqRef.current;
+    abortControllerRef.current?.abort();
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
     clearPolling();
     setErrorMessage(null);
     setSuccessNotice(null);
@@ -62,7 +73,8 @@ export const AnalysisAppPage: React.FC<AnalysisAppPageProps> = ({ onNavigateHome
     setProgressPercent(20);
 
     try {
-      const uploadResp = await uploadFile(file);
+      const uploadResp = await uploadFile(file, controller.signal);
+      if (seq !== requestSeqRef.current) return;
       const jobId = uploadResp.id;
       activeJobIdRef.current = jobId;
 
@@ -75,9 +87,11 @@ export const AnalysisAppPage: React.FC<AnalysisAppPageProps> = ({ onNavigateHome
       const maxAttempts = 35; // 35 * 800ms ~ 28s
 
       const poll = async () => {
+        if (seq !== requestSeqRef.current) return;
         attempts++;
         try {
-          const result = await getAnalysis(jobId);
+          const result = await getAnalysis(jobId, controller.signal);
+          if (seq !== requestSeqRef.current) return;
 
           if (result.status === 'completed') {
             setProgressPercent(100);
@@ -101,6 +115,7 @@ export const AnalysisAppPage: React.FC<AnalysisAppPageProps> = ({ onNavigateHome
 
           pollingTimerRef.current = window.setTimeout(poll, 800);
         } catch (pollErr) {
+          if (seq !== requestSeqRef.current) return;
           const msg =
             pollErr instanceof ApiError
               ? pollErr.message
@@ -115,6 +130,7 @@ export const AnalysisAppPage: React.FC<AnalysisAppPageProps> = ({ onNavigateHome
       // Initial fast poll
       pollingTimerRef.current = window.setTimeout(poll, 400);
     } catch (err) {
+      if (seq !== requestSeqRef.current) return;
       const msg =
         err instanceof ApiError
           ? err.message
@@ -149,6 +165,9 @@ export const AnalysisAppPage: React.FC<AnalysisAppPageProps> = ({ onNavigateHome
   };
 
   const handleResetToUpload = () => {
+    requestSeqRef.current++;
+    abortControllerRef.current?.abort();
+    abortControllerRef.current = null;
     clearPolling();
     setStage('idle');
     setErrorMessage(null);
@@ -180,18 +199,18 @@ export const AnalysisAppPage: React.FC<AnalysisAppPageProps> = ({ onNavigateHome
           <span className="inline-block w-2 h-2 rounded-full bg-cyan-400"></span>
           <span>Không gian thử nghiệm: <strong>Local Demo App (/app)</strong></span>
         </div>
-          <a
-            href="/"
-            onClick={(e) => {
-              if (onNavigateHome) {
-                e.preventDefault();
-                onNavigateHome();
-              }
-            }}
-            className="text-cyan-400 hover:text-cyan-300 font-medium inline-flex items-center space-x-1 underline decoration-cyan-500/50 hover:decoration-cyan-400 transition"
-          >
-            <span>← Quay lại trang giới thiệu (/)</span>
-          </a>
+        <a
+          href="/"
+          onClick={(e) => {
+            if (onNavigateHome) {
+              e.preventDefault();
+              onNavigateHome();
+            }
+          }}
+          className="text-cyan-400 hover:text-cyan-300 font-medium inline-flex items-center space-x-1 underline decoration-cyan-500/50 hover:decoration-cyan-400 transition"
+        >
+          <span>← Quay lại trang giới thiệu (/)</span>
+        </a>
       </div>
 
       {/* Header with Backend status */}
@@ -225,6 +244,29 @@ export const AnalysisAppPage: React.FC<AnalysisAppPageProps> = ({ onNavigateHome
         {/* Banner DEMO nổi bật */}
         <DemoBanner />
 
+        {/* Cảnh báo trạng thái Local-Only khi Backend không kết nối */}
+        {backendOnline === false && (
+          <div
+            role="status"
+            className="p-4 rounded-xl bg-slate-900/90 border border-amber-500/50 text-slate-200 text-xs sm:text-sm space-y-2 shadow-lg"
+          >
+            <div className="flex items-start space-x-3">
+              <span className="text-amber-400 text-lg leading-none mt-0.5">⚠️</span>
+              <div className="flex-1 space-y-1">
+                <p className="font-bold text-amber-300">
+                  Giao diện thử nghiệm cục bộ (Local-Only Demo) — Backend chưa kết nối
+                </p>
+                <p className="text-slate-300 leading-relaxed text-xs sm:text-sm">
+                  Website công khai chỉ phục vụ mục đích giới thiệu và trải nghiệm giao diện. Backend xử lý tệp media được giữ <strong>hoàn toàn trên máy cá nhân (localhost:8000)</strong> và <strong>không được public lên Internet</strong> nhằm bảo đảm an toàn dữ liệu và quyền riêng tư cục bộ.
+                </p>
+                <p className="text-slate-400 text-xs">
+                  Để thực hiện phân tích tệp media, vui lòng tải mã nguồn về máy và khởi chạy backend theo hướng dẫn trong <code className="bg-slate-800 text-cyan-300 px-1.5 py-0.5 rounded font-mono">README.md</code>.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Giới thiệu & Phạm vi */}
         <ScopeIntroduction />
 
@@ -233,7 +275,12 @@ export const AnalysisAppPage: React.FC<AnalysisAppPageProps> = ({ onNavigateHome
           <ErrorAlert
             message={errorMessage}
             onRetry={stage === 'error' ? handleRetry : undefined}
-            onDismiss={() => setErrorMessage(null)}
+            onDismiss={() => {
+              setErrorMessage(null);
+              if (stage === 'error') {
+                setStage('idle');
+              }
+            }}
           />
         )}
 

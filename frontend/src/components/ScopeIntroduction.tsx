@@ -49,9 +49,9 @@ export const ScopeIntroduction: React.FC = () => {
             </div>
             <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-700/40">
               <p className="font-semibold text-cyan-300 mb-1">3. Bảo vệ quyền riêng tư</p>
-              <p className="text-slate-400 text-xs">
-                Tệp tạm có tên ngẫu nhiên trong thư mục quarantine; backend xóa sau khi tính thông số. Phân tích chưa chạy parser video/audio ngoài WAV.
-              </p>
+                <p className="text-slate-400 text-xs">
+                  Tệp tạm có tên ngẫu nhiên trong thư mục quarantine; backend xóa ngay sau khi tính thông số. Thời lượng media (WAV, MP3, OGG, MP4, WebM) chỉ được đọc trong container sandbox cô lập, không chạy parser trên tiến trình host.
+                </p>
             </div>
           </div>
 
